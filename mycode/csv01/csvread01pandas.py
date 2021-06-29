@@ -11,10 +11,13 @@ def main():
 
     # uncomment the line below if you need to see what we are looping across
     # orient = 'records' prevents to_dict() from using the index value
-    print(superdf.to_dict(orient='records'))
-
+    #print(superdf.to_dict(orient='records'))
+    mydata = []
     for row in superdf.to_dict(orient='records'):
-        print(f"\t{row['name']} aka {row['heroname']}, was born in {row['birthday month']}.")
+        mydata.append(f"\t{row['name']} was born in {row['birthday month']}.")
+   
+    df = pandas.DataFrame(mydata)
+    df.to_csv("regularbirthday.csv", index=False)
     
     # print the total number of lines (span returns (lines, columns))
     print(f"Total lines processed {superdf.shape[0]}")
